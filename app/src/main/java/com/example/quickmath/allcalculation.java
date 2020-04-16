@@ -201,7 +201,7 @@ public class allcalculation extends AppCompatActivity {
 
     private void to_get_random() {
 
-        if (difficulty == "easy") {
+        if (difficulty.equals("easy")) {
 
             rand1 = new Random().nextInt(9);// random number between 0 to 5
             rand2 = new Random().nextInt(9);
@@ -239,7 +239,7 @@ public class allcalculation extends AppCompatActivity {
             }
 
         }
-        else if (difficulty == "medium"){
+        else if (difficulty.equals("medium")){
             rand1 = new Random().nextInt(25);
             rand2 = new Random().nextInt(25);
 
@@ -275,7 +275,7 @@ public class allcalculation extends AppCompatActivity {
                 Toast.makeText(this, " there is an error", Toast.LENGTH_LONG).show();
             }
         }
-        else {
+        else if (difficulty.equals("hard")){
             rand1 = new Random().nextInt(50);
             rand2 = new Random().nextInt(25);
 
@@ -310,6 +310,11 @@ public class allcalculation extends AppCompatActivity {
             } else {
                 Toast.makeText(this, " there is an error", Toast.LENGTH_LONG).show();
             }
+        }
+        else{
+            Toast.makeText(this, "Error" + difficulty, Toast.LENGTH_LONG).show();
+            Intent i = new Intent(this, choices.class);
+            startActivity(i);
         }
 
 
