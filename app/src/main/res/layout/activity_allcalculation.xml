@@ -8,6 +8,7 @@
     tools:context=".allcalculation"
     android:padding="15dp">
 
+
     <TextView
         android:id="@+id/num_one"
         android:layout_width="wrap_content"
@@ -131,5 +132,10 @@
         android:inputType="number"
         android:textColor="#FFFFFF"
         android:textSize="75sp" />
+
+    <nl.dionsegijn.konfetti.KonfettiView
+        android:id="@+id/viewKonfetti"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

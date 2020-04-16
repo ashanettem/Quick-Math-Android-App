@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -34,6 +35,10 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
 
+import nl.dionsegijn.konfetti.KonfettiView;
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
+
 public class allcalculation extends AppCompatActivity {
     private TextView num11;
     private TextView num12;
@@ -52,6 +57,7 @@ public class allcalculation extends AppCompatActivity {
     int numOfquestions;
     SharedPreferences sp;
     private ImageView gc, rx;
+    KonfettiView viewKonfetti;
 
     SoundPool soundPool;
     private int sound1;
@@ -94,6 +100,8 @@ public class allcalculation extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_allcalculation);
+
+        viewKonfetti = (KonfettiView)findViewById(R.id.viewKonfetti);
 
         doBindService();
         Intent music = new Intent();
@@ -181,6 +189,18 @@ public class allcalculation extends AppCompatActivity {
 
 
         } else {
+            //when game is completed play konfetti
+            viewKonfetti.build()
+                    .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                    .setDirection(0.0, 359.0)
+                    .setSpeed(1f, 5f)
+                    .setFadeOutEnabled(true)
+                    .setTimeToLive(2000L)
+                    .addShapes(Shape.RECT, Shape.CIRCLE)
+                    .addSizes(new Size(12, 5))
+                    .setPosition(-50f, viewKonfetti.getWidth() + 50f, -50f, -50f)
+                    .streamFor(300, 5000L);
+
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             CollectionReference gamesDB = db.collection("Games");
 
@@ -189,11 +209,17 @@ public class allcalculation extends AppCompatActivity {
             currentGame.setChild(email);
             gamesDB.add(currentGame);
 
-            soundPool.play(sound1,1,1,0,0,1);
+            soundPool.play(sound1, 1, 1, 0, 0, 1);
 
-            Intent go_back_to_first_page = new Intent(this, choices.class);
-            startActivity(go_back_to_first_page);
+            //delay start of new activity
+            new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run () {
 
+                Intent go_back_to_first_page = new Intent(allcalculation.this, choices.class);
+                startActivity(go_back_to_first_page);
+            }
+        },5000);
             Toast.makeText(this,"Complete",Toast.LENGTH_LONG).show();
         }
     }
