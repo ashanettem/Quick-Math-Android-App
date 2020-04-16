@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ic_launcher_background"
+    tools:context=".allcalculation"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/num_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="100sp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_above="@id/num_two"
+        />
+
+
+    <TextView
+        android:id="@+id/tvSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ivSign"
+        android:layout_marginLeft="25sp"
+        android:layout_marginBottom="26dp"
+        android:gravity="center"
+        android:text="@string/plus"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="100sp" />
+
+    <TextView
+        android:id="@+id/num_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ivSign"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="115dp"
+        android:layout_marginBottom="26dp"
+        android:gravity="center"
+        android:text="51"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="100sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/ivSign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dash"
+        android:layout_above="@id/etInput"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="75sp"
+        android:text=""
+        android:layout_above="@id/btnInput"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="35dp"
+        android:visibility="invisible"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+         />
+
+
+
+    <Button
+        android:id="@+id/btnInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="@string/calculate"
+        android:textColor="#8e69ad"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="25dp"/>
+
+    <TextView
+        android:id="@+id/tvNumOfQuestions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="25dp"
+        android:text=""
+        android:textStyle="bold"
+        android:textSize="35sp"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"/>
+
+    <ImageView
+        android:id="@+id/greenCheck"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_above="@id/btnInput"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="45dp"
+        android:src="@drawable/big_green_check"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/big_green_check" />
+
+    <ImageView
+        android:id="@+id/redX"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_above="@id/btnInput"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="45dp"
+        android:src="@drawable/big_red_x"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/big_red_x" />
+
+    <EditText
+        android:id="@+id/etInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnInput"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"
+        android:inputType="number"
+        android:textColor="#FFFFFF"
+        android:textSize="75sp" />
+
+</RelativeLayout>

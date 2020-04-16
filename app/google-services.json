@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "345255402036",
+    "firebase_url": "https://quickmath-531e5.firebaseio.com",
+    "project_id": "quickmath-531e5",
+    "storage_bucket": "quickmath-531e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345255402036:android:cf4946dc0e5890b1f5c861",
+        "android_client_info": {
+          "package_name": "com.example.quickmath"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "345255402036-2puuns4oglj18s4r3998233qhqf7gtco.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quickmath",
+            "certificate_hash": "cd6305c84e0cb433e6f254c4df2d7003844368b0"
+          }
+        },
+        {
+          "client_id": "345255402036-hukq6h7d4r1ma6dtqlj5ir33483coer1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUgcFHtlccC6yieoZJ1atORZbvEuPg4-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "345255402036-hukq6h7d4r1ma6dtqlj5ir33483coer1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
