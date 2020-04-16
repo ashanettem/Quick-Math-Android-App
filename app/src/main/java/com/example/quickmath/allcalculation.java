@@ -209,7 +209,7 @@ public class allcalculation extends AppCompatActivity {
             currentGame.setChild(email);
             gamesDB.add(currentGame);
 
-            soundPool.play(sound1, 1, 1, 0, 0, 1);
+            soundPool.play(sound1, 50, 50, 0, 0, 1);
 
             //delay start of new activity
             new Handler().postDelayed(new Runnable(){
