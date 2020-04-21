@@ -60,4 +60,6 @@
     <string name="hard">Hard</string>
     <string name="medium">Medium</string>
     <string name="easy">Easy</string>
+    <string name="login_error">Incorrect Username or Password</string>
+    <string name="games_completed">Games Completed:</string>
 </resources>

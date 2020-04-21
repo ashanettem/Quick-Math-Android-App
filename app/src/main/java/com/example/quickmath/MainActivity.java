@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     mServ.pauseMusic();
                 }
             }
+
             @Override
             public void onHomeLongPressed() {
                 if (mServ != null) {
@@ -109,18 +110,19 @@ public class MainActivity extends AppCompatActivity {
 
         sp = getSharedPreferences("registrationLog", 0);
 
+        SharedPreferences sp1 = getSharedPreferences("currentUser", 0);
+        SharedPreferences.Editor sp1edit = sp1.edit();
+
 
         childRegBtn.setOnClickListener(new View.OnClickListener() {
-                                      @Override
-                                      public void onClick(View v) {
+                                           @Override
+                                           public void onClick(View v) {
 
-                                          Intent startNewActivity = new Intent(v.getContext(), regActivity.class);
-                                          startActivity(startNewActivity);
+                                               Intent startNewActivity = new Intent(v.getContext(), regActivity.class);
+                                               startActivity(startNewActivity);
 
-                                      }
-                                  }
-
-
+                                           }
+                                       }
         );
 
         parentRegBtn.setOnClickListener(new View.OnClickListener() {
@@ -142,45 +144,69 @@ public class MainActivity extends AppCompatActivity {
                 String pass = passTxt.getText().toString();
 
 
+                if (user.isEmpty() || pass.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Please Fill in all Fields", Toast.LENGTH_LONG).show();
+                } else {
 
+                    usersDB.whereEqualTo("email", user).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
 
-                usersDB.whereEqualTo("email", user).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
-                            User currentUser = documentSnapshot.toObject(User.class);
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
-                            String email = currentUser.getEmail();
-                            String password = currentUser.getPassword();
+                            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
 
-                            if (email.equals(user) && password.equals(pass)){
-                                if (currentUser.getRole().equals("Child")){
-                                Intent intent = new Intent(view.getContext(),choices.class);
-                                intent.putExtra("User" , email);
-                                startActivity(intent);
-                                Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                User currentUser = documentSnapshot.toObject(User.class);
+
+                                String email = currentUser.getEmail();
+                                String password = currentUser.getPassword();
+
+                                if (email.equals(user) && password.equals(pass)) {
+                                    if (currentUser.getRole().equals("Child")) {
+
+                                        Intent intent = new Intent(view.getContext(), choices.class);
+                                        sp1edit.putString("User", email);
+                                        sp1edit.commit();
+                                        startActivity(intent);
+                                        Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+                                    } else if (currentUser.getRole().equals("Parent")) {
+
+                                        Parent currentParent = documentSnapshot.toObject(Parent.class);
+                                        String child = currentParent.getChildEmail();
+                                        Intent intent = new Intent(view.getContext(), parentDash.class);
+                                        sp1edit.putString("User", email);
+                                        sp1edit.putString("Child", child);
+                                        sp1edit.commit();
+                                        intent.putExtra("User", email);
+                                        intent.putExtra("Child", child);
+                                        startActivity(intent);
+                                        Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+                                    } else {
+
+                                        Toast.makeText(MainActivity.this, "Please Sign Up For Access", Toast.LENGTH_LONG).show();
+
+                                    }
+
+                                } else if (!email.equals(user) || !password.equals(pass)) {
+
+                                    Toast.makeText(MainActivity.this, "Incorrect Username or Password", Toast.LENGTH_LONG).show();
+
+                                } else if ((!email.equals(user) && password.equals(pass)) || (email.equals(user) && !password.equals(pass))){
+
+                                    Toast.makeText(MainActivity.this, "Incorrect Username or Password", Toast.LENGTH_LONG).show();
+
+                                } else {
+
+                                    Toast.makeText(MainActivity.this, "Incorrect Username or Password", Toast.LENGTH_LONG).show();
+
                                 }
-                                else if (currentUser.getRole().equals("Parent")){
-                                    Intent intent = new Intent(view.getContext(), parentDash.class);
-                                    intent.putExtra("User" , email);
-                                    startActivity(intent);
-                                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                }
-                                else{
-                                    Toast.makeText(MainActivity.this, "Please Sign Up For Access", Toast.LENGTH_LONG).show();
-                                }
-
-                            }
-                            else{
-                                Toast.makeText(MainActivity.this, "Incorrect Username or Password", Toast.LENGTH_LONG).show();
                             }
                         }
-                    }
-                });
-
+                    });
+                }
             }
         });
-
     }
 
     @Override

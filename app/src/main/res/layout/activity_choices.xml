@@ -37,8 +37,8 @@
 
                 <RadioButton
                     android:id="@+id/btnEasy"
-                    android:layout_width="351dp"
-                    android:layout_height="58dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="25sp"
@@ -46,8 +46,9 @@
                     android:text="@string/easy"/>
                 <RadioButton
                     android:id="@+id/btnMedium"
-                    android:layout_width="351dp"
-                    android:layout_height="58dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="25sp"
@@ -55,8 +56,9 @@
                     android:text="@string/medium"/>
                 <RadioButton
                     android:id="@+id/btnHard"
-                    android:layout_width="351dp"
-                    android:layout_height="58dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="25sp"
@@ -77,14 +79,13 @@
 
             <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center">
+                android:layout_height="match_parent">
 
 
                 <RadioButton
                     android:id="@+id/q5"
-                    android:layout_width="351dp"
-                    android:layout_height="58dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/_5_questions"
                     android:textColor="@color/common_google_signin_btn_text_dark_default"
@@ -95,8 +96,9 @@
 
                 <RadioButton
                     android:id="@+id/q10"
-                    android:layout_width="351dp"
-                    android:layout_height="58dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="@string/_10_questions"
                     android:textColor="@color/common_google_signin_btn_text_dark_default"
@@ -106,8 +108,9 @@
 
                 <RadioButton
                     android:id="@+id/q15"
-                    android:layout_width="351dp"
-                    android:layout_height="58dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="@string/_15_questions"
                     android:textColor="@color/common_google_signin_btn_text_dark_default"

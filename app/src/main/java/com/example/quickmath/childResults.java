@@ -1,6 +1,5 @@
 package com.example.quickmath;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,33 +8,19 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
 
 public class childResults extends AppCompatActivity {
 
@@ -46,6 +31,8 @@ public class childResults extends AppCompatActivity {
     Parent currentUser;
     RecyclerView gameList;
     GameAdapter adapter;
+
+    SharedPreferences sp;
 
     LinearLayoutManager llm;
 
@@ -89,6 +76,8 @@ public class childResults extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_child_results);
 
+        sp = getSharedPreferences("currentUser", MODE_PRIVATE);
+
         doBindService();
         Intent music = new Intent();
         music.setClass(this, MusicService.class);
@@ -114,16 +103,17 @@ public class childResults extends AppCompatActivity {
         mHomeWatcher.startWatch();
 
         gameList = findViewById(R.id.gameList);
-        returnHome = findViewById(R.id.btnHome);
+        returnHome = findViewById(R.id.btnProfileHome);
         btnGraph = findViewById(R.id.btnGraph);
         llm = new LinearLayoutManager(this);
-        //String string = getIntent().getStringExtra("User");
 
-        //setRecyclerView();
+        String string = sp.getString("Child", "Child");
 
-        //Query q = games.whereEqualTo("Child", string);
+        //String string = getIntent().getStringExtra("Child");
 
-        Query q = games;
+
+
+        Query q = games.whereEqualTo("child", string);
 
         FirestoreRecyclerOptions<Game> options = new FirestoreRecyclerOptions.Builder<Game>()
                 .setQuery(q, Game.class).build();

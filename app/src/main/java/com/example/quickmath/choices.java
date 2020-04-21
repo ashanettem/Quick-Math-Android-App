@@ -23,7 +23,7 @@ public class choices extends AppCompatActivity {
     RadioButton q5, q10, q15, easy, medium, hard;
     SharedPreferences sp;
     SharedPreferences.Editor spEdit;
-    Button add,subtract,multiply,divide,logOut;
+    Button add,subtract,multiply,divide,logOut, profile;
 
 
     private boolean mIsBound = false;
@@ -97,7 +97,7 @@ public class choices extends AppCompatActivity {
         medium = findViewById(R.id.btnMedium);
         hard = findViewById(R.id.btnHard);
 
-        sp = getSharedPreferences("SP", MODE_PRIVATE);
+        sp = getSharedPreferences("currentUser", MODE_PRIVATE);
         spEdit = sp.edit();
 
         add = findViewById(R.id.add_button);
@@ -105,14 +105,21 @@ public class choices extends AppCompatActivity {
         multiply = findViewById(R.id.multiply_button);
         divide = findViewById(R.id.divide_button);
         logOut = findViewById(R.id.logOut_button);
+        profile = findViewById(R.id.button);
 
         add.setOnClickListener(this::Button_add);
         subtract.setOnClickListener(this::Button_subtract);
         divide.setOnClickListener(this::divide_button);
         multiply.setOnClickListener(this::Button_multiply);
+        profile.setOnClickListener(this::profile);
 
         logOut.setOnClickListener(this::logOut);
 
+    }
+
+    private void profile(View view) {
+        Intent i = new Intent(this, ChildProfile.class);
+        startActivity(i);
     }
 
     private void logOut(View view) {

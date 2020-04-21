@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
@@ -31,6 +32,7 @@ public class parentDash extends AppCompatActivity {
     CollectionReference users = db.collection("Users");
     String user;
     Parent currentUser;
+    SharedPreferences sp;
 
     private boolean mIsBound = false;
     private MusicService mServ;
@@ -70,6 +72,9 @@ public class parentDash extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_admin_dash);
 
+        sp = getSharedPreferences("currentUser", 0);
+
+
         doBindService();
         Intent music = new Intent();
         music.setClass(this, MusicService.class);
@@ -103,7 +108,7 @@ public class parentDash extends AppCompatActivity {
         results.setOnClickListener(this::displayR);
         createExam.setOnClickListener(this::createX);
         logOut.setOnClickListener(this::lOut);
-        user = getIntent().getStringExtra("User");
+        user = sp.getString("User", "User");
         tvAdmin.setText(user);
 
 
@@ -118,28 +123,16 @@ public class parentDash extends AppCompatActivity {
 
     private void createX(View view) {
         Intent i = new Intent(this, createGame.class);
-        i.putExtra("User", user);
         startActivity(i);
 
     }
 
     private void displayR(View view) {
         Intent i = new Intent(this, childResults.class);
-        users.whereEqualTo("email", getIntent().getStringExtra("User")).limit(1).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                    currentUser = documentSnapshot.toObject(Parent.class);
-
-                    String childEmail = currentUser.getChildEmail();
-                    i.putExtra("User", childEmail);
-                    startActivity(i);
-
-                }
-            }
-        });
+        startActivity(i);
 
     }
+
 
     @Override
     protected void onResume() {

@@ -11,14 +11,14 @@
 
     <TextView
         android:id="@+id/num_one"
-        android:layout_width="wrap_content"
+        android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:text="100"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="100sp"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        android:gravity="center"
+        android:gravity="right"
         android:layout_above="@id/num_two"
         />
 
@@ -37,13 +37,12 @@
 
     <TextView
         android:id="@+id/num_two"
-        android:layout_width="wrap_content"
+        android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:layout_above="@id/ivSign"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="115dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="26dp"
-        android:gravity="center"
+        android:gravity="right"
         android:text="51"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="100sp"

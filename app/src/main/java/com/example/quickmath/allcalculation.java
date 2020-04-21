@@ -103,6 +103,8 @@ public class allcalculation extends AppCompatActivity {
 
         viewKonfetti = (KonfettiView)findViewById(R.id.viewKonfetti);
 
+
+
         doBindService();
         Intent music = new Intent();
         music.setClass(this, MusicService.class);
@@ -144,14 +146,16 @@ public class allcalculation extends AppCompatActivity {
         sound1 = soundPool.load(this, R.raw.sound1, 1);
 
 
+        sp = getSharedPreferences("currentUser", MODE_PRIVATE);
 
-        email = getIntent().getStringExtra("User");
+        email = sp.getString("User", "User");
         value = getIntent().getStringExtra("value");
         difficulty = getIntent().getStringExtra("difficulty");
 
 
-        sp = getSharedPreferences("SP", MODE_PRIVATE);
+
         numOfquestions = sp.getInt("numOfQuestions", 5);
+
 
 
         inputButton = findViewById(R.id.btnInput);

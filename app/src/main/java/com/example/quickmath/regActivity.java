@@ -113,11 +113,12 @@ public class regActivity extends AppCompatActivity {
 
 
 
-        if (firstName.isEmpty() == true && lastName.isEmpty() == true && password.isEmpty() == true && username.isEmpty() == true) {
+        if (firstName.isEmpty() || lastName.isEmpty() || password.isEmpty() || username.isEmpty() ) {
+
             Toast.makeText(this, "Please Fill in All Fields", Toast.LENGTH_SHORT).show();
+
         }
         else {
-
 
                 Child newChild = new Child(firstName, lastName, username, password, "Child");
 
