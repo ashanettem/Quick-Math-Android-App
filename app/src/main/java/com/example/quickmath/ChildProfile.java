@@ -67,6 +67,7 @@ public class ChildProfile extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +89,8 @@ public class ChildProfile extends AppCompatActivity {
         txtGamesCompleted = findViewById(R.id.gamesCompleted);
 
         sp = getSharedPreferences("currentUser", 0);
+
+
 
 
 
@@ -127,10 +130,12 @@ public class ChildProfile extends AppCompatActivity {
                 for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                         documentCounter++;
                         txtGamesCompleted.setText(Integer.toString(documentCounter));
+                        checkCoins(documentCounter);
 
                 }
             }
         });
+
 
 
 
@@ -145,10 +150,60 @@ public class ChildProfile extends AppCompatActivity {
         a6.setOnClickListener(this::setAvatar);
 
 
+
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    private void setAvatar(View view) {
+    public void checkCoins(int n) {
+
+        ImageView av1, av2, av3, av4, av5, av6;
+
+        av1 = findViewById(R.id.iv1);
+        av2 = findViewById(R.id.iv2);
+        av3 = findViewById(R.id.iv3);
+        av4 = findViewById(R.id.iv4);
+        av5 = findViewById(R.id.iv5);
+        av6 = findViewById(R.id.iv6);
+
+
+
+        if (n >= 30){
+            av1.setForeground(null);
+            av2.setForeground(null);
+            av3.setForeground(null);
+            av4.setForeground(null);
+            av5.setForeground(null);
+            av6.setForeground(null);
+        }
+        else if(n < 30 && n >=25){
+            av1.setForeground(null);
+            av2.setForeground(null);
+            av3.setForeground(null);
+            av4.setForeground(null);
+            av5.setForeground(null);
+        }
+        else if (n < 25 && n >=20){
+            av1.setForeground(null);
+            av2.setForeground(null);
+            av3.setForeground(null);
+            av4.setForeground(null);
+        }
+        else if (n < 20 && n >=15){
+            av1.setForeground(null);
+            av2.setForeground(null);
+            av3.setForeground(null);
+        }
+        else if (n < 15 && n >=10){
+            av1.setForeground(null);
+            av2.setForeground(null);
+        }
+        else {
+            av1.setForeground(null);
+        }
+    }
+
+     private void setAvatar(View view) {
 
         String s = (String) txtGamesCompleted.getText();
         int n = Integer.parseInt(s);
@@ -157,8 +212,8 @@ public class ChildProfile extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.iv1:
                 if (n >= 5) {
-                    a1.setForeground(null);
                     currentAvatar.setImageResource(R.drawable.b);
+
                 }
                 else {
                     Toast.makeText(this, "You need 5 coins to unlock.",Toast.LENGTH_LONG).show();
@@ -166,8 +221,7 @@ public class ChildProfile extends AppCompatActivity {
                 break;
             case R.id.iv2:
                 if (n >= 10) {
-                a2.setForeground(null);
-                currentAvatar.setImageResource(R.drawable.c);
+                    currentAvatar.setImageResource(R.drawable.c);
                 }
                 else {
 
@@ -176,7 +230,6 @@ public class ChildProfile extends AppCompatActivity {
                 break;
             case R.id.iv3:
                 if (n >= 15) {
-                    a3.setForeground(null);
                     currentAvatar.setImageResource(R.drawable.d);
                 }
                 else {
@@ -184,7 +237,6 @@ public class ChildProfile extends AppCompatActivity {
                 }                break;
             case R.id.iv4:
                 if (n >= 20) {
-                    a4.setForeground(null);
                     currentAvatar.setImageResource(R.drawable.e);
                 }
                 else {
@@ -193,7 +245,6 @@ public class ChildProfile extends AppCompatActivity {
                 break;
             case R.id.iv5:
                 if (n >= 25) {
-                    a5.setForeground(null);
                     currentAvatar.setImageResource(R.drawable.f);
                 }
                 else {
@@ -202,7 +253,6 @@ public class ChildProfile extends AppCompatActivity {
                 break;
             case R.id.iv6:
                 if (n >= 30) {
-                    a6.setForeground(null);
                     currentAvatar.setImageResource(R.drawable.g);
                 }
                 else {

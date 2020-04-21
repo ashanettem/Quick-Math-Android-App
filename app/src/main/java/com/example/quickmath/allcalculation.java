@@ -198,16 +198,7 @@ public class allcalculation extends AppCompatActivity {
 
         } else {
             //when game is completed play konfetti
-            viewKonfetti.build()
-                    .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
-                    .setDirection(0.0, 359.0)
-                    .setSpeed(1f, 5f)
-                    .setFadeOutEnabled(true)
-                    .setTimeToLive(2000L)
-                    .addShapes(Shape.RECT, Shape.CIRCLE)
-                    .addSizes(new Size(12, 5))
-                    .setPosition(-50f, viewKonfetti.getWidth() + 50f, -50f, -50f)
-                    .streamFor(300, 5000L);
+
 
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             CollectionReference gamesDB = db.collection("Games");
@@ -221,11 +212,31 @@ public class allcalculation extends AppCompatActivity {
                 soundPool.play(sound1, 1, 1, 0, 0, 1);
                 medal.setImageResource(R.drawable.gold3);
                 medal.setVisibility(View.VISIBLE);
+                viewKonfetti.build()
+                        .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                        .setDirection(0.0, 359.0)
+                        .setSpeed(1f, 5f)
+                        .setFadeOutEnabled(true)
+                        .setTimeToLive(2000L)
+                        .addShapes(Shape.RECT, Shape.CIRCLE)
+                        .addSizes(new Size(12, 5))
+                        .setPosition(-50f, viewKonfetti.getWidth() + 50f, -50f, -50f)
+                        .streamFor(300, 5000L);
             }
             else if(Final_result >= 60 && Final_result < 80) {
                 soundPool.play(sound1, 1, 1, 0, 0, 1);
                 medal.setImageResource(R.drawable.silver_2);
                 medal.setVisibility(View.VISIBLE);
+                viewKonfetti.build()
+                        .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                        .setDirection(0.0, 359.0)
+                        .setSpeed(1f, 5f)
+                        .setFadeOutEnabled(true)
+                        .setTimeToLive(2000L)
+                        .addShapes(Shape.RECT, Shape.CIRCLE)
+                        .addSizes(new Size(12, 5))
+                        .setPosition(-50f, viewKonfetti.getWidth() + 50f, -50f, -50f)
+                        .streamFor(300, 5000L);
             }
             else {
                 soundPool.play(sound2, 1, 1, 0, 0, 1);
