@@ -56,11 +56,13 @@ public class allcalculation extends AppCompatActivity {
     String difficulty;
     int numOfquestions;
     SharedPreferences sp;
-    private ImageView gc, rx;
+    private ImageView gc, rx, medal;
     KonfettiView viewKonfetti;
+
 
     SoundPool soundPool;
     private int sound1;
+    private int sound2;
 
     private boolean mIsBound = false;
     private MusicService mServ;
@@ -144,6 +146,7 @@ public class allcalculation extends AppCompatActivity {
         }
 
         sound1 = soundPool.load(this, R.raw.sound1, 1);
+        sound2 = soundPool.load(this,R.raw.wrong_sfx,1);
 
 
         sp = getSharedPreferences("currentUser", MODE_PRIVATE);
@@ -167,6 +170,7 @@ public class allcalculation extends AppCompatActivity {
         tvSign = findViewById(R.id.tvSign);
         gc = findViewById(R.id.greenCheck);
         rx = findViewById(R.id.redX);
+        medal = findViewById(R.id.ivMedal);
 
 
         tocall();
@@ -213,7 +217,20 @@ public class allcalculation extends AppCompatActivity {
             currentGame.setChild(email);
             gamesDB.add(currentGame);
 
-            soundPool.play(sound1, 50, 50, 0, 0, 1);
+            if (Final_result >= 80) {
+                soundPool.play(sound1, 1, 1, 0, 0, 1);
+                medal.setImageResource(R.drawable.gold3);
+                medal.setVisibility(View.VISIBLE);
+            }
+            else if(Final_result >= 60 && Final_result < 80) {
+                soundPool.play(sound1, 1, 1, 0, 0, 1);
+                medal.setImageResource(R.drawable.silver_2);
+                medal.setVisibility(View.VISIBLE);
+            }
+            else {
+                soundPool.play(sound2, 1, 1, 0, 0, 1);
+                medal.setVisibility(View.VISIBLE);
+            }
 
             //delay start of new activity
             new Handler().postDelayed(new Runnable(){
@@ -222,6 +239,7 @@ public class allcalculation extends AppCompatActivity {
 
                 Intent go_back_to_first_page = new Intent(allcalculation.this, choices.class);
                 startActivity(go_back_to_first_page);
+                finish();
             }
         },5000);
             Toast.makeText(this,"Complete",Toast.LENGTH_LONG).show();

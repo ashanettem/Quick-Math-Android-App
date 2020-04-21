@@ -30,17 +30,6 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <Button
-        android:id="@+id/btnGraph"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="#FFF"
-        android:text="@string/graph"
-        android:textColor="#8e69ad"
-        android:textSize="25dp"
-        android:textStyle="bold" />
-
-    <Button
         android:id="@+id/btnProfileHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

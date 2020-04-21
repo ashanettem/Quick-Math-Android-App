@@ -25,10 +25,8 @@ import com.google.firebase.firestore.Query;
 public class childResults extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    CollectionReference users = db.collection("Users");
     CollectionReference games = db.collection("Games");
-    Button returnHome, btnGraph;
-    Parent currentUser;
+    Button returnHome;
     RecyclerView gameList;
     GameAdapter adapter;
 
@@ -104,7 +102,6 @@ public class childResults extends AppCompatActivity {
 
         gameList = findViewById(R.id.gameList);
         returnHome = findViewById(R.id.btnProfileHome);
-        btnGraph = findViewById(R.id.btnGraph);
         llm = new LinearLayoutManager(this);
 
         String string = sp.getString("Child", "Child");

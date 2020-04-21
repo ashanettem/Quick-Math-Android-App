@@ -62,4 +62,5 @@
     <string name="easy">Easy</string>
     <string name="login_error">Incorrect Username or Password</string>
     <string name="games_completed">Games Completed:</string>
+    <string name="coins_earned">Coins Earned</string>
 </resources>

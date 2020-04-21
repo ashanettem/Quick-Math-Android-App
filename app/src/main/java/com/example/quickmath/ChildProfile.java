@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -68,6 +70,10 @@ public class ChildProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
+        getSupportActionBar().hide(); // hide the title bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_child_profile);
 
         currentAvatar = findViewById(R.id.ivCurrentSticker);
@@ -155,7 +161,7 @@ public class ChildProfile extends AppCompatActivity {
                     currentAvatar.setImageResource(R.drawable.b);
                 }
                 else {
-                    Toast.makeText(this, "Games Completed is not 5",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "You need 5 coins to unlock.",Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.iv2:
@@ -165,7 +171,7 @@ public class ChildProfile extends AppCompatActivity {
                 }
                 else {
 
-                Toast.makeText(this, "Games Completed is not 10",Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "You need 10 coins to unlock.",Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.iv3:
@@ -174,7 +180,7 @@ public class ChildProfile extends AppCompatActivity {
                     currentAvatar.setImageResource(R.drawable.d);
                 }
                 else {
-                    Toast.makeText(this, "Games Completed is not 15",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "You need 15 coins to unlock.",Toast.LENGTH_LONG).show();
                 }                break;
             case R.id.iv4:
                 if (n >= 20) {
@@ -182,7 +188,7 @@ public class ChildProfile extends AppCompatActivity {
                     currentAvatar.setImageResource(R.drawable.e);
                 }
                 else {
-                    Toast.makeText(this, "Games Completed is not 20",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "You need 20 coins to unlock.",Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.iv5:
@@ -191,7 +197,7 @@ public class ChildProfile extends AppCompatActivity {
                     currentAvatar.setImageResource(R.drawable.f);
                 }
                 else {
-                    Toast.makeText(this, "Games Completed is not 25",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "You need 25 coins to unlock.",Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.iv6:
@@ -200,11 +206,11 @@ public class ChildProfile extends AppCompatActivity {
                     currentAvatar.setImageResource(R.drawable.g);
                 }
                 else {
-                    Toast.makeText(this, "Games Completed is not 30",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "You need 30 coins to unlock.",Toast.LENGTH_LONG).show();
                 }
                 break;
             default:
-                Toast.makeText(ChildProfile.this, "Please Complete More Games \n To Unlock more Stickers.", Toast.LENGTH_LONG).show();
+                Toast.makeText(ChildProfile.this, "Please Complete More Games \n To earn more coins.", Toast.LENGTH_LONG).show();
         }
 
     }

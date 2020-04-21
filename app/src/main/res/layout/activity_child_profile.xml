@@ -31,7 +31,7 @@
             android:id="@+id/gamesCompletedLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/games_completed"
+            android:text="@string/coins_earned"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/ivCurrentSticker"
             android:textSize="20sp"
