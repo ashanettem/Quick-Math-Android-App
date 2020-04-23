@@ -72,7 +72,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="15dp"
             android:layout_toLeftOf="@id/iv2"
-            android:foreground="@drawable/lock"
+            
             android:src="@drawable/b" />
 
         <ImageView
@@ -82,7 +82,7 @@
             android:layout_below="@+id/gamesCompleted"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-            android:foreground="@drawable/lock"
+            
             android:src="@drawable/c" />
 
         <ImageView
@@ -93,7 +93,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/iv2"
-            android:foreground="@drawable/lock"
+            
             android:src="@drawable/d" />
 
         <ImageView
@@ -103,7 +103,7 @@
             android:layout_below="@id/iv1"
             android:layout_marginTop="15dp"
             android:layout_toLeftOf="@id/iv5"
-            android:foreground="@drawable/lock"
+            
             android:src="@drawable/e" />
 
         <ImageView
@@ -114,7 +114,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
-            android:foreground="@drawable/lock"
+            
             android:src="@drawable/f" />
 
         <ImageView
@@ -125,7 +125,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/iv5"
-            android:foreground="@drawable/lock"
+            
             android:src="@drawable/g" />
 
     <Button

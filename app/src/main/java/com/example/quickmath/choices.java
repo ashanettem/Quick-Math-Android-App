@@ -125,6 +125,7 @@ public class choices extends AppCompatActivity {
     private void logOut(View view) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
+        finish();
     }
 
     public void Button_add(View view) {

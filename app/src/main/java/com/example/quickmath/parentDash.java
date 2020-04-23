@@ -118,18 +118,21 @@ public class parentDash extends AppCompatActivity {
 
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
+        finish();
 
     }
 
     private void createX(View view) {
         Intent i = new Intent(this, createGame.class);
         startActivity(i);
+        finish();
 
     }
 
     private void displayR(View view) {
         Intent i = new Intent(this, childResults.class);
         startActivity(i);
+        finish();
 
     }
 

@@ -129,6 +129,7 @@ public class childResults extends AppCompatActivity {
     private void backToDash(View view) {
         Intent i = new Intent(this, parentDash.class);
         startActivity(i);
+        finish();
     }
 
 

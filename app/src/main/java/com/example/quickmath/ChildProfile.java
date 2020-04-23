@@ -130,7 +130,7 @@ public class ChildProfile extends AppCompatActivity {
                 for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                         documentCounter++;
                         txtGamesCompleted.setText(Integer.toString(documentCounter));
-                        checkCoins(documentCounter);
+                        // checkCoins(documentCounter);
 
                 }
             }
@@ -154,6 +154,7 @@ public class ChildProfile extends AppCompatActivity {
 
     }
 
+    /*
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void checkCoins(int n) {
 
@@ -201,7 +202,8 @@ public class ChildProfile extends AppCompatActivity {
         else {
             av1.setForeground(null);
         }
-    }
+    } */
+
 
      private void setAvatar(View view) {
 
@@ -269,6 +271,7 @@ public class ChildProfile extends AppCompatActivity {
 
         Intent i = new Intent(this, choices.class);
         startActivity(i);
+        finish();
 
     }
 
